@@ -3,10 +3,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 
+
 dotenv.config();
 connectDB();
 
 const app = express();
+const PORT = process.env.PORT
+
 app.use(cors({
     origin: "http://localhost:5173", methods: "GET, POST, PUT, DELETE",
     credentials: true
@@ -26,4 +29,4 @@ app.use("/api/drivers", driverRoutes);
 app.use("/api/simulation", simulationRoutes);
 app.use("/api/orders", orderRoutes);
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(PORT, () => console.log("Server running on port 5000"));
