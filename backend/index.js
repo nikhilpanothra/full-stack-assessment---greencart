@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT
 
 app.use(cors({
-    origin: "http://localhost:5173", methods: "GET, POST, PUT, DELETE",
+    origin: process.env.FRONTEND_URL, 
     credentials: true
 }));
 app.use(express.json());
