@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL, 
+    origin:"https://full-stack-assessment-greencart-o4o.vercel.app", 
     credentials: true
 }));
 app.use(express.json());
