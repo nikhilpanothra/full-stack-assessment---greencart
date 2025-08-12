@@ -16,7 +16,7 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } catch (err) {
-      alert("Login failed: "+"User not Found");
+      alert("Login failed: " + (err.response?.data?.message || err.message ));
     } finally {
       setLoading(false);
     }

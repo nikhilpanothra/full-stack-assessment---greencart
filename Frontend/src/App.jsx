@@ -22,6 +22,7 @@ export default function App() {
             <ProtectedRoute>
               <Navbar />
               <Routes>
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/simulation" element={<Simulation />} />
                 <Route path="/drivers" element={<Drivers />} />
