@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT
 
 app.use(cors({
-    origin:"https://full-stack-assessment-greencart-o4o.vercel.app", 
+    origin: process.env.FRONTEND_URL, 
     credentials: true
 }));
 app.use(express.json());
@@ -28,5 +28,8 @@ app.use("/api/routes", routeRoutes);
 app.use("/api/drivers", driverRoutes);
 app.use("/api/simulation", simulationRoutes);
 app.use("/api/orders", orderRoutes);
+app.get("/", (req, res) => {
+  res.send("Backend API is running...");
+});
 
-app.listen(PORT, () => console.log("Server running on port 5000"));
+// app.listen(PORT, () => console.log("Server running on port 5000"));

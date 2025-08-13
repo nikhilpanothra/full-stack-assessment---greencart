@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://full-stack-assessment-greencart.vercel.app/api"
+  baseURL: import.meta.env.VITE_BASE_URL 
 });
 
 // Add JWT token to every request if exists
