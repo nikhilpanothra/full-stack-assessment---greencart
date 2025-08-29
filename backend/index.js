@@ -3,17 +3,26 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 
-
 dotenv.config();
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
-app.use(cors({
-    origin: process.env.FRONTEND_URL, 
-    credentials: true
-}));
+// ✅ Allow CORS for frontend
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
+// ✅ Handle preflight requests globally
+app.options("*", cors());
+
+// ✅ Parse JSON
 app.use(express.json());
 
 // ✅ API routes
@@ -28,11 +37,9 @@ app.use("/api/routes", routeRoutes);
 app.use("/api/drivers", driverRoutes);
 app.use("/api/simulation", simulationRoutes);
 app.use("/api/orders", orderRoutes);
+
 app.get("/", (req, res) => {
   res.send("Backend API is running...");
 });
 
-
-export default app
-
-
+export default app;
